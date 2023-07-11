@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/m1chendi/frontend-project-46/issues"
   },
-  "homepage": "https://github.com/m1chendi/frontend-project-46#readme"
+  "homepage": "https://github.com/m1chendi/frontend-project-46#readme",
+  "bin": {
+    "code": "gendiff.js"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  }
 }
