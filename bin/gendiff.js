@@ -8,5 +8,9 @@ program
   .version('1.0.0')
   .option('-V, --version', 'output the version number')
   .option('-h, --help', 'display help for command')
+  .action((filepath1, filepath2) => {
+    const option = program.opts();
+    console.log(gendiff(option.format)); 
+  });
 
 program.parse();
