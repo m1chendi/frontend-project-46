@@ -6,7 +6,7 @@ const resolvePath = (filePath) => (filePath.includes('__fixtures__')
    ? path.resolve(process.cwd(), filePath)
    : path.resolve(process.cwd(), `__fixtures__/${filePath}`));
 
-export default function genDiff(filePath1, filePath2) {
+export default function gendiff(filePath1, filePath2) {
     const path1 = resolvePath(filePath1);
     const path2 = resolvePath(filePath2);
 
@@ -27,9 +27,9 @@ export default function genDiff(filePath1, filePath2) {
         } else if(Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
             if(data1[key] === data2[key]) {
             result.push(`   ${key}: ${data2[key]}`);
-            } else(data1[key] !== data2[key]) {
+            } else if(data1[key] !== data2[key]) {
             result.push(`   + ${key}: ${data2[key]}`);
-            result.push(`   - ${key}: ${data1[key]}`)
+            result.push(`   - ${key}: ${data1[key]}`);
             };
         };
     };
