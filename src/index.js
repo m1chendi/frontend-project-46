@@ -19,7 +19,7 @@ export default function genDiff(filePath1, filePath2) {
     const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
 
     const result = ['{']
-    for (key of keys) {
+    for(let key of keys) {
         if(Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
             result.push(`   - ${key}: ${data1[key]}`);
         } else if(!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
