@@ -1,5 +1,11 @@
+install:
+	npm ci
+
 publish:
 	npm publish --dry-run
 
-link: 
-	sudo npm link
+gendiff: 
+	bin/gendiff.js
+
+run:
+	node bin/gendiff file1.json file2.json
