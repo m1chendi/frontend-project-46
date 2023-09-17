@@ -28,8 +28,8 @@ export default function gendiff(filePath1, filePath2) {
             if (data1[key] === data2[key]) {
             result.push(`   ${key}: ${data2[key]}`);
             } else if (data1[key] !== data2[key]) {
-            result.push(`   + ${key}: ${data2[key]}`);
             result.push(`   - ${key}: ${data1[key]}`);
+            result.push(`   + ${key}: ${data2[key]}`);
             };
         };
     };
