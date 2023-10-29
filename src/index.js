@@ -1,38 +1,23 @@
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import _ from 'lodash';
-import parsesFile from './parsers.js';
+import parser from './parsers.js';
+import getDifferenceTree from './buildAST.js';
+import formatter from './formatters/index.js';
 
-const resolvePath = (filePath) => (filePath.includes('__fixtures__')
-  ? path.resolve(process.cwd(), filePath)
-  : path.resolve(process.cwd(), `__fixtures__/${filePath}`));
+const resolvePath = (filePath) => path.resolve(process.cwd(), filePath);
 
-export default function gendiff(filePath1, filePath2) {
+const getExtension = (filename) => path.extname(filename).slice(1);
+
+const getData = (filePath) => parser(readFileSync(filePath, 'utf-8'), getExtension(filePath));
+
+const gendiff = (filePath1, filePath2, format = 'stylish') => {
   const path1 = resolvePath(filePath1);
   const path2 = resolvePath(filePath2);
 
-  const data1 = parsesFile(path1);
-  const data2 = parsesFile(path2);
+  const data1 = getData(path1);
+  const data2 = getData(path2);
 
-  const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+  return formatter(getDifferenceTree(data1, data2), format);
+};
 
-  const result = ['{'];
-
-  // eslint-disable-next-line no-restricted-syntax
-  for (const key of keys) {
-    if (Object.hasOwn(data1, key) && !Object.hasOwn(data2, key)) {
-      result.push(`   - ${key}: ${data1[key]}`);
-    } else if (!Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-      result.push(`   + ${key}: ${data2[key]}`);
-    } else if (Object.hasOwn(data1, key) && Object.hasOwn(data2, key)) {
-      if (data1[key] === data2[key]) {
-        result.push(`   ${key}: ${data2[key]}`);
-      } else if (data1[key] !== data2[key]) {
-        result.push(`   - ${key}: ${data1[key]}`);
-        result.push(`   + ${key}: ${data2[key]}`);
-      }
-    }
-  }
-
-  result.push('}');
-  return result.join('\n');
-}
+export default gendiff;

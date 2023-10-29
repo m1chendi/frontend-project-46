@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 import path from 'node:path';
 import fs from 'fs';
 
-const getExtension = (filename) => path.extname(filename);
+const getExtension = (filename) => path.extname(filename).slice(1);
 
 const getName = (filename) => path.basename(filename);
 
