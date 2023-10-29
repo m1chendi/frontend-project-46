@@ -86,8 +86,8 @@ gendiff file1.json file2.json
 ![image](https://github.com/m1chendi/frontend-project-46/assets/113183708/77cb32f3-5570-4530-810e-3119eadca023)
 
 ## Пример вывода `plain` формата:
-
-![image](https://github.com/m1chendi/frontend-project-46/assets/113183708/be3a2088-0709-464a-b91a-dcd17385a339)
+![image](https://github.com/m1chendi/frontend-project-46/assets/113183708/e5f355c4-a99c-4068-95ac-58771cb0c41f)
 
 ## Пример вывода `json` формата:
-![image](https://github.com/m1chendi/frontend-project-46/assets/113183708/caf5deec-7089-41c2-98bb-25490dce033d)
+![image](https://github.com/m1chendi/frontend-project-46/assets/113183708/b0af587c-4d2a-434b-bc62-2e832f8648c0)
+
