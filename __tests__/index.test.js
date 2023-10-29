@@ -1,8 +1,8 @@
+import path from 'node:path';
 import gendiff from '../src/index.js';
-import resultJSON from '../__fixtures__/result.js';
 import resultStylish from '../__fixtures__/result.js';
-import resultPlain from '../__fixtures__/result.js';
-import path from 'node:path':
+import resultJSON from '../__fixtures__/resultJSON.js';
+import resultPlain from '../__fixtures__/resultPlain.js';
 
 const testList = [
   'yml',
